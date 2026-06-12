@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AS Infotech - Premium Digital Agency offering SEO-optimized Web Development, App Design, and Digital Marketing services to scale your business.">
+  <title>AS Infotech | Premium Web Design & Digital Marketing Agency</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* CSS Variables - Color System */
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F8FAFC;
+      --bg-tertiary: #F1F5F9;
+      --accent: #2563EB;
+      --accent-gradient: linear-gradient(135deg, #2563EB, #60A5FA);
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --border-color: rgba(15, 23, 42, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Lenis Smooth Scroll Setup */
+    html.lenis {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Base Resets */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .display-font {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Typography */
+    .text-gradient {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2rem;
+    }
+
+    /* Buttons */
+    .btn-premium {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn-primary-gradient {
+      background: var(--accent-gradient);
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary-gradient:hover {
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Floating Pill Navbar */
+    .navbar-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+
+    .navbar-custom {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 100px;
+      padding: 12px 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      font-family: 'Space Grotesk', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      transition: all 0.4s ease;
+    }
+
+    .navbar-wrapper.scrolled {
+      padding: 10px 20px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -1px;
+      color: var(--text-primary) !important;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: var(--text-secondary) !important;
+      margin: 0 12px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent) !important;
+    }
+
+    /* Hero Section - Fully Centered */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 100px;
+      padding-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-primary);
+      text-align: center;
+    }
+
+    /* Low Opacity Grid Line Background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 50px 50px;
+      background-image:
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+      z-index: 0;
+    }
+
+    /* Ambient Blue Gradients Left & Right */
+    .hero-glow-left {
+      position: absolute;
+      top: 10%;
+      left: -15%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0) 65%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-glow-right {
+      position: absolute;
+      bottom: -10%;
+      right: -15%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, rgba(96, 165, 250, 0) 65%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Mouse Parallax Background Elements */
+    .bg-floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-shape {
+      position: absolute;
+      color: var(--accent);
+      opacity: 0.08;
+      display: inline-block;
+    }
+
+    .float-anim {
+      display: inline-block;
+      animation: floatShape var(--duration) ease-in-out infinite var(--delay);
+    }
+
+    @keyframes floatShape {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+
+    /* Distributing Icons across the screen */
+    .shape-1 {
+      top: 15%;
+      left: 8%;
+      font-size: 3.5rem;
+      --duration: 6s;
+      --delay: 0s;
+    }
+
+    .shape-2 {
+      top: 75%;
+      left: 12%;
+      font-size: 4.5rem;
+      --duration: 8s;
+      --delay: 1s;
+    }
+
+    .shape-3 {
+      top: 25%;
+      right: 45%;
+      font-size: 2.8rem;
+      --duration: 7s;
+      --delay: 2s;
+    }
+
+    .shape-4 {
+      bottom: 15%;
+      right: 40%;
+      font-size: 4rem;
+      --duration: 9s;
+      --delay: 0.5s;
+    }
+
+    .shape-5 {
+      top: 60%;
+      right: 15%;
+      font-size: 3.2rem;
+      --duration: 7.5s;
+      --delay: 1.5s;
+    }
+
+    .shape-6 {
+      top: 20%;
+      right: 25%;
+      font-size: 2.5rem;
+      --duration: 6.5s;
+      --delay: 0.8s;
+    }
+
+    .shape-7 {
+      bottom: 30%;
+      left: 20%;
+      font-size: 3rem;
+      --duration: 8.5s;
+      --delay: 2.2s;
+    }
+
+    .shape-8 {
+      top: 40%;
+      left: 40%;
+      font-size: 2rem;
+      --duration: 5.5s;
+      --delay: 0.3s;
+    }
+
+    .shape-9 {
+      top: 85%;
+      right: 20%;
+      font-size: 3.8rem;
+      --duration: 8s;
+      --delay: 0.5s;
+    }
+
+    .shape-10 {
+      top: 10%;
+      left: 35%;
+      font-size: 2.2rem;
+      --duration: 6s;
+      --delay: 1s;
+    }
+
+    .shape-11 {
+      bottom: 25%;
+      left: 50%;
+      font-size: 3.5rem;
+      --duration: 7s;
+      --delay: 1.5s;
+    }
+
+    .shape-12 {
+      top: 45%;
+      right: 8%;
+      font-size: 2.8rem;
+      --duration: 5s;
+      --delay: 2s;
+    }
+
+    .shape-13 {
+      top: 8%;
+      right: 10%;
+      font-size: 3.5rem;
+      --duration: 6.5s;
+      --delay: 0.7s;
+    }
+
+    .shape-14 {
+      bottom: 10%;
+      left: 30%;
+      font-size: 2.5rem;
+      --duration: 7.2s;
+      --delay: 1.2s;
+    }
+
+    .shape-15 {
+      top: 55%;
+      left: 5%;
+      font-size: 4rem;
+      --duration: 8.5s;
+      --delay: 0.4s;
+    }
+
+    .shape-16 {
+      top: 35%;
+      right: 35%;
+      font-size: 2.4rem;
+      --duration: 6.8s;
+      --delay: 2.5s;
+    }
+
+    .shape-17 {
+      bottom: 40%;
+      right: 5%;
+      font-size: 3rem;
+      --duration: 7.8s;
+      --delay: 0.9s;
+    }
+
+    .shape-18 {
+      top: 70%;
+      left: 40%;
+      font-size: 2.6rem;
+      --duration: 5.8s;
+      --delay: 1.8s;
+    }
+
+    .shape-19 {
+      top: 20%;
+      left: 60%;
+      font-size: 3.2rem;
+      --duration: 8.2s;
+      --delay: 0.2s;
+    }
+
+    .shape-20 {
+      bottom: 5%;
+      right: 60%;
+      font-size: 4.2rem;
+      --duration: 9.5s;
+      --delay: 1.4s;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-badge-new {
+      display: inline-flex;
+      padding: 8px 20px;
+      background: #EBF3FF;
+      color: #2563EB;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-title-new {
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-desc-new {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 2.5rem auto;
+      line-height: 1.6;
+    }
+
+    /* Hero Buttons */
+    .btn-solid-blue {
+      background: #2563EB;
+      color: #fff !important;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-solid-blue:hover {
+      background: #1D4ED8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline-light-new {
+      background: #fff;
+      color: var(--text-primary) !important;
+      border: 1px solid #E5E7EB;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-light-new:hover {
+      border-color: #D1D5DB;
+      background: #F9FAFB;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Image Wrapper */
+    .hero-graphic-wrapper {
+      position: relative;
+      width: 100%;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floating-img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      object-fit: contain;
+      animation: floatImg 6s ease-in-out infinite;
+    }
+
+    @keyframes floatImg {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Hero Stats Section */
+    .hero-stats {
+      padding-top: 2rem;
+      margin-top: 1rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-stat-item h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-stat-item p {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6B7280;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    /* Standard Section Padding */
+    .section-padding {
+      padding: 70px 0;
+    }
+
+    /* About Section */
+    .about-section {
+      background: var(--bg-primary);
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .about-image-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .experience-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--bg-primary);
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+    }
+
+    .icon-box-accent {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    /* Bento Grid Services */
+    .services-section {
+      background: var(--bg-secondary);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2rem;
+    }
+
+    .bento-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .bento-card:hover {
+      border-color: rgba(37, 99, 235, 0.3);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+      transform: translateY(-4px);
+    }
+
+    .bento-card.large {
+      grid-column: span 2;
+    }
+
+    .bento-card.tall {
+      grid-row: span 2;
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    /* Filterable Works Section */
+    .work-section {
+      background: var(--bg-primary);
+    }
+
+    .filter-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--text-primary);
+      color: #fff;
+      border-color: var(--text-primary);
+    }
+
+    /* Clickable Work Card */
+    .work-card {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 30px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      transition: transform 0.4s;
+      display: block;
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+
+    .work-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .work-img-wrapper {
+      width: 100%;
+      height: 320px;
+      background: var(--bg-tertiary);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .work-img-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent);
+    }
+
+    .pattern-web {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .pattern-app {
+      background: linear-gradient(45deg, #e2e8f0 25%, transparent 25%, transparent 75%, #e2e8f0 75%, #e2e8f0), linear-gradient(45deg, #e2e8f0 25%, transparent 25%, transparent 75%, #e2e8f0 75%, #e2e8f0);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+
+    .pattern-marketing {
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.03) 10px, rgba(0, 0, 0, 0.03) 20px);
+    }
+
+    .pattern-video {
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    }
+
+    .pattern-poster {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%);
+    }
+
+    .work-info {
+      padding: 24px;
+    }
+
+    .work-category {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .project-item {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .project-item.hide {
+      display: none;
+    }
+
+    /* Clients Logo Section */
+    .clients-section {
+      padding: 40px 0 60px;
+      background: var(--bg-primary);
+    }
+
+    .client-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .client-logo-link img {
+      max-height: 80px;
+      width: auto;
+      filter: grayscale(100%) opacity(0.6);
+      transition: all 0.3s ease;
+    }
+
+    .client-logo-link:hover img {
+      filter: grayscale(0%) opacity(1);
+      transform: translateY(-4px);
+    }
+
+    /* Feedback Section */
+    .feedback-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 4rem;
+      color: var(--accent);
+      opacity: 0.05;
+      z-index: -1;
+      transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover .quote-icon {
+      opacity: 0.15;
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+
+    .testimonial-author img {
+      width: 75px;
+      height: 75px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: var(--bg-secondary);
+      padding: 5px;
+      border: 1px solid var(--border-color);
+    }
+
+    .author-info h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .author-info p {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    /* Contact Section & Form Styling */
+    .contact-section {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .contact-form-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--accent-gradient);
+    }
+
+    .form-control {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: #9CA3AF;
+    }
+
+    .form-control:focus {
+      background: #FFFFFF;
+      border-color: #2563EB;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+      outline: none;
+    }
+
+    .form-label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 30px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      display: block;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    .footer-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      color: var(--text-primary);
+      transition: all 0.3s;
+    }
+
+    .footer-icon:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Utilities & Mobile Responsive Fixes */
+    .gs-reveal {
+      visibility: hidden;
+    }
+
+    @media (max-width: 991px) {
+      .section-padding {
+        padding: 50px 0;
+      }
+
+      .navbar-custom {
+        padding: 10px 16px;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 60px;
+        min-height: auto;
+      }
+
+      .hero-title-new {
+        font-size: 2.8rem;
+      }
+
+      /* Spacing Fixes */
+      .about-image-wrapper {
+        margin-bottom: 2.5rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .bento-card.large,
+      .bento-card.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .bento-card {
+        padding: 24px;
+      }
+
+      .filter-btns {
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .work-card {
+        margin-bottom: 20px;
+      }
+
+      .contact-form-card {
+        padding: 32px 24px;
+      }
+
+      .clients-section {
+        padding: 20px 0 40px;
+      }
+
+      .mt-mobile-4 {
+        margin-top: 2rem !important;
+      }
+
+      .mb-mobile-4 {
+        margin-bottom: 2rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar-wrapper" id="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">AS Infotech.</a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav">
+          <i class="ph ph-list fs-2"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#work">Portfolio</a></li>
+          </ul>
+          <div class="d-none d-lg-block">
+            <a href="#contact" class="btn-premium btn-primary-gradient py-2 px-4" style="font-size: 0.9rem;">
+              Let's Talk <i class="ph ph-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <header class="hero" id="home">
+    <div class="hero-glow-left"></div>
+    <div class="hero-glow-right"></div>
+
+    <div class="bg-floating-elements" id="parallax-scene">
+      <span class="floating-shape shape-1" data-speed="2"><i class="ph ph-code float-anim"></i></span>
+      <span class="floating-shape shape-2" data-speed="-3"><i class="ph ph-rocket float-anim"></i></span>
+      <span class="floating-shape shape-3" data-speed="4"><i class="ph ph-chart-line-up float-anim"></i></span>
+      <span class="floating-shape shape-4" data-speed="-2"><i class="ph ph-megaphone float-anim"></i></span>
+      <span class="floating-shape shape-5" data-speed="5"><i class="ph ph-lightbulb float-anim"></i></span>
+      <span class="floating-shape shape-6" data-speed="-4"><i class="ph ph-desktop float-anim"></i></span>
+      <span class="floating-shape shape-7" data-speed="3"><i class="ph ph-pen-nib float-anim"></i></span>
+      <span class="floating-shape shape-8" data-speed="-5"><i
+          class="ph ph-currency-circle-dollar float-anim"></i></span>
+      <span class="floating-shape shape-9" data-speed="6"><i class="ph ph-cpu float-anim"></i></span>
+      <span class="floating-shape shape-10" data-speed="-3"><i
+          class="ph ph-globe-hemisphere-west float-anim"></i></span>
+      <span class="floating-shape shape-11" data-speed="2"><i class="ph ph-database float-anim"></i></span>
+      <span class="floating-shape shape-12" data-speed="-4"><i class="ph ph-wifi-high float-anim"></i></span>
+      <span class="floating-shape shape-13" data-speed="5"><i class="ph ph-atom float-anim"></i></span>
+      <span class="floating-shape shape-14" data-speed="-2"><i class="ph ph-browser float-anim"></i></span>
+      <span class="floating-shape shape-15" data-speed="3"><i class="ph ph-cloud float-anim"></i></span>
+      <span class="floating-shape shape-16" data-speed="-5"><i class="ph ph-figma-logo float-anim"></i></span>
+      <span class="floating-shape shape-17" data-speed="4"><i class="ph ph-terminal float-anim"></i></span>
+      <span class="floating-shape shape-18" data-speed="-3"><i class="ph ph-trend-up float-anim"></i></span>
+      <span class="floating-shape shape-19" data-speed="2"><i class="ph ph-lightning float-anim"></i></span>
+      <span class="floating-shape shape-20" data-speed="-6"><i class="ph ph-magic-wand float-anim"></i></span>
+    </div>
+
+    <div class="container hero-content">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+          <div class="hero-badge-new gs-reveal mx-auto">
+            TRUSTED BY 50+ BUSINESSES
+          </div>
+
+          <h1 class="hero-title-new gs-reveal">
+            Digital Marketing & Software Development <br>
+            <span class="text-gradient">That Delivers Real Results</span>
+          </h1>
+
+          <p class="hero-desc-new gs-reveal mx-auto">
+            Customer satisfaction is our priority. We build quality software, create compelling digital campaigns, and
+            help your brand grow — all from one partner.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 gs-reveal mt-2 justify-content-center">
+            <a href="#contact" class="btn-solid-blue">
+              Book a Free Call
+            </a>
+            <a href="#about" class="btn-outline-light-new d-flex align-items-center gap-2">
+              Learn More <span>&rarr;</span>
+            </a>
+          </div>
+
+          <div class="hero-stats gs-reveal mx-auto">
+            <div class="row g-4 justify-content-center">
+              <div class="col-6 col-md-3 hero-stat-item mb-0">
+                <h3><span class="counter" data-target="5">0</span>+</h3>
+                <p>Years Experience</p>
+              </div>
+              <div class="col-6 col-md-3 hero-stat-item mb-0">
+                <h3><span class="counter" data-target="50">0</span>+</h3>
+                <p>Happy Clients</p>
+              </div>
+              <div class="col-6 col-md-3 hero-stat-item mb-0">
+                <h3><span class="counter" data-target="99">0</span>%</h3>
+                <p>Success Rate</p>
+              </div>
+              <div class="col-6 col-md-3 hero-stat-item mb-0">
+                <h3>24/7</h3>
+                <p>Support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 mt-5 gs-reveal">
+          <div class="hero-graphic-wrapper">
+            <img src="home.png" alt="AS Infotech Premium Web Design Visual" class="floating-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-section section-padding" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 gs-reveal pe-lg-5">
+          <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000"
+              alt="Creative Digital Agency Team working" class="img-fluid">
+            <div class="experience-badge">
+              <h4 class="text-primary mb-0 font-weight-bold display-font">5+ Years</h4>
+              <p class="text-secondary small mb-0">Of Digital Excellence</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 gs-reveal mt-mobile-4">
+          <span class="text-accent fw-bold text-uppercase small"
+            style="color: var(--accent); letter-spacing: 1px;">About AS Infotech</span>
+          <h2 class="section-title mt-2 mb-4">Empowering brands with <span class="text-gradient">visionary
+              digital</span> solutions.</h2>
+          <p class="text-secondary mb-4 pb-2" style="font-size: 1.1rem; line-height: 1.7;">
+            At AS Infotech, we bridge the gap between creative design and technical excellence. We build SEO-optimized
+            web platforms, intelligent mobile apps, and high-converting marketing campaigns that position your business
+            as a market leader.
+          </p>
+
+          <div class="d-flex flex-column gap-4">
+            <div class="d-flex align-items-start gap-3">
+              <div class="icon-box-accent">
+                <i class="ph ph-chart-polar"></i>
+              </div>
+              <div>
+                <h4 class="h6 mb-1 font-weight-bold">Data-Driven Strategy</h4>
+                <p class="text-secondary small mb-0">We rely on advanced analytics and deep market research to guarantee
+                  measurable ROI and consistent brand growth.</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <div class="icon-box-accent">
+                <i class="ph ph-code-block"></i>
+              </div>
+              <div>
+                <h4 class="h6 mb-1 font-weight-bold">Scalable & Future-Proof Tech</h4>
+                <p class="text-secondary small mb-0">We build clean, secure, and robust architectures designed to grow
+                  seamlessly as your user base expands.</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <div class="icon-box-accent">
+                <i class="ph ph-paint-brush"></i>
+              </div>
+              <div>
+                <h4 class="h6 mb-1 font-weight-bold">Award-Winning Creative Design</h4>
+                <p class="text-secondary small mb-0">Beautiful, user-centric interfaces and branding that capture
+                  attention instantly and drive deep engagement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section section-padding" id="services">
+    <div class="container text-center">
+      <h2 class="section-title gs-reveal">Everything you need to <br><span class="text-gradient">dominate
+          digital.</span></h2>
+      <p class="section-subtitle gs-reveal text-center">From robust code to viral creative campaigns, we provide
+        end-to-end solutions tailored for high-growth companies.</p>
+
+      <div class="bento-grid text-start">
+        <div class="bento-card large gs-reveal">
+          <i class="ph ph-code service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">Web Development</h3>
+            <p class="text-secondary mb-0">Scalable, high-performance web applications, landing pages, and e-commerce
+              platforms built with React, Next.js, and Node.js.</p>
+          </div>
+        </div>
+        <div class="bento-card gs-reveal">
+          <i class="ph ph-device-mobile service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">App Development</h3>
+            <p class="text-secondary mb-0">Native and cross-platform mobile experiences designed for optimal user
+              retention.</p>
+          </div>
+        </div>
+
+        <div class="bento-card gs-reveal">
+          <i class="ph ph-trend-up service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">Digital Marketing</h3>
+            <p class="text-secondary mb-0">Data-driven ad campaigns and acquisition strategies that convert clicks into
+              customers.</p>
+          </div>
+        </div>
+        <div class="bento-card gs-reveal">
+          <i class="ph ph-magnifying-glass service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">SEO Optimization</h3>
+            <p class="text-secondary mb-0">Technical and content SEO strategies to dominate search engine rankings.</p>
+          </div>
+        </div>
+        <div class="bento-card gs-reveal">
+          <i class="ph ph-video-camera service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">Video Production</h3>
+            <p class="text-secondary mb-0">Engaging promotional videos, reels, and animations to tell your brand's
+              story.</p>
+          </div>
+        </div>
+
+        <div class="bento-card large gs-reveal">
+          <i class="ph ph-paint-brush-broad service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">Posters & Graphic Design</h3>
+            <p class="text-secondary mb-0">Striking visual identities, social media creatives, print-ready posters, and
+              UI/UX design that capture attention instantly.</p>
+          </div>
+        </div>
+        <div class="bento-card gs-reveal">
+          <i class="ph ph-cloud-arrow-up service-icon"></i>
+          <div>
+            <h3 class="h4 mb-3">Cloud & Hosting</h3>
+            <p class="text-secondary mb-0">Secure server management, fast SSD hosting, and cloud infrastructure setup
+              for 99.9% uptime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-section section-padding pb-0" id="work">
+    <div class="container">
+      <div class="gs-reveal mb-4 text-center">
+        <h2 class="section-title">Selected <span class="text-gradient">Works</span></h2>
+        <p class="text-secondary section-subtitle">A glimpse into the premium digital experiences we've crafted.</p>
+      </div>
+
+      <div class="filter-btns gs-reveal">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="app">App Dev</button>
+        <button class="filter-btn" data-filter="marketing">Marketing & SEO</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="poster">Posters & UI</button>
+      </div>
+
+      <div class="row g-4" id="portfolio-grid">
+
+        <div class="col-lg-6 project-item web gs-reveal">
+          <a href="#work" class="work-card">
+            <div class="work-img-wrapper pattern-web">
+              <i class="ph ph-browser text-secondary opacity-25" style="font-size: 8rem;"></i>
+            </div>
+            <div class="work-info">
+              <span class="work-category">Web Development</span>
+              <h3 class="h4 mb-2">Global FinTech Platform</h3>
+              <p class="text-secondary small mb-0">A high-performance React dashboard processing millions in
+                transactions securely.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-6 project-item app gs-reveal">
+          <a href="#work" class="work-card">
+            <div class="work-img-wrapper pattern-app">
+              <i class="ph ph-device-mobile text-secondary opacity-25" style="font-size: 8rem;"></i>
+            </div>
+            <div class="work-info">
+              <span class="work-category">App Development</span>
+              <h3 class="h4 mb-2">Aura Fitness Tracker</h3>
+              <p class="text-secondary small mb-0">Cross-platform mobile application with real-time health data syncing.
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-4 project-item marketing gs-reveal">
+          <a href="#work" class="work-card">
+            <div class="work-img-wrapper pattern-marketing" style="height: 240px;">
+              <i class="ph ph-chart-line-up text-secondary opacity-25" style="font-size: 6rem;"></i>
+            </div>
+            <div class="work-info">
+              <span class="work-category">Marketing & SEO</span>
+              <h3 class="h5 mb-2">SaaS Growth Campaign</h3>
+              <p class="text-secondary small mb-0">+200% organic traffic increase in 6 months.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-4 project-item video gs-reveal">
+          <a href="#work" class="work-card">
+            <div class="work-img-wrapper pattern-video" style="height: 240px;">
+              <i class="ph ph-play-circle text-secondary opacity-25" style="font-size: 6rem;"></i>
+            </div>
+            <div class="work-info">
+              <span class="work-category">Video Production</span>
+              <h3 class="h5 mb-2">Brand Anthem 2026</h3>
+              <p class="text-secondary small mb-0">Cinematic commercial for a leading lifestyle brand.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-4 project-item poster gs-reveal">
+          <a href="#work" class="work-card">
+            <div class="work-img-wrapper pattern-poster" style="height: 240px;">
+              <i class="ph ph-image text-secondary opacity-25" style="font-size: 6rem;"></i>
+            </div>
+            <div class="work-info">
+              <span class="work-category">Poster & Branding</span>
+              <h3 class="h5 mb-2">Tech Summit Identity</h3>
+              <p class="text-secondary small mb-0">Complete visual identity and print assets for an AI conference.</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="clients-section gs-reveal" id="clients">
+    <div class="container text-center">
+      <p class="text-secondary fw-semibold mb-5 text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">
+        Trusted by Innovative Companies
+      </p>
+      <div class="row align-items-center justify-content-center g-4">
+        <div class="col-6 col-md-3">
+          <a href="#" class="client-logo-link">
+            <img src="images/logos/amgok logo.png" alt="Amgok Logo">
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="client-logo-link">
+            <img src="https://placehold.co/180x60/ffffff/4B5563?text=KleanklubCbe" alt="KleanklubCbe Logo">
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="client-logo-link">
+            <img src="images/logos/Balaji Eco Homes.jpg" alt="Balaji Eco Homes Logo">
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="client-logo-link">
+            <img src="images/logos/Sri rudhra cars.jpg" alt="Client Logo 4">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feedback-section section-padding" id="feedback">
+    <div class="container">
+      <div class="text-center gs-reveal mb-5">
+        <h2 class="section-title mt-2">Client <span class="text-gradient">Feedback</span></h2>
+        <p class="text-secondary section-subtitle">Don't just take our word for it. See what our partners have to say.
+        </p>
+      </div>
+
+      <div class="testimonial-grid">
+
+        <div class="testimonial-card gs-reveal">
+          <i class="ph-fill ph-quotes quote-icon"></i>
+          <p class="testimonial-text">"AS Infotech transformed our business strategy. Their expertise helped us increase
+            our market reach by 40% in just 6 months."</p>
+          <div class="testimonial-author">
+            <img src="images/logos/amgok logo.png" alt="Amgok Logo Icon">
+            <div class="author-info">
+              <h4>Amgok</h4>
+              <p>Clothing Brand</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card gs-reveal">
+          <i class="ph-fill ph-quotes quote-icon"></i>
+          <p class="testimonial-text">"The team provided actionable insights that completely changed how we approach
+            customer acquisition. Our conversion rates are up by 45%."</p>
+          <div class="testimonial-author">
+            <img src="https://placehold.co/100x100/F1F5F9/2563EB?text=KK" alt="KleanklubCbe Logo Icon">
+            <div class="author-info">
+              <h4>Sindhu S</h4>
+              <p>Founder, KleanklubCbe</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card gs-reveal">
+          <i class="ph-fill ph-quotes quote-icon"></i>
+          <p class="testimonial-text">"Working with AS Infotech was game-changing for our business. Their strategic
+            guidance helped us navigate a difficult market transition seamlessly."</p>
+          <div class="testimonial-author">
+            <img src="images/logos/Balaji Eco Homes.jpg" alt="Balaji Eco Homes Logo Icon">
+            <div class="author-info">
+              <h4>Balaji Eco Homes</h4>
+              <p>Building Dream Houses</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section section-padding" id="contact">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 gs-reveal pe-lg-5">
+          <span class="text-accent fw-bold text-uppercase small"
+            style="color: var(--accent); letter-spacing: 1px;">Start a project</span>
+          <h2 class="section-title mt-2 mb-4">Let's <span class="text-gradient">Connect</span></h2>
+          <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.7;">
+            Ready to build something exceptional? Fill out the form to request a free consultation, and our team will
+            get back to you within 24 hours.
+          </p>
+
+          <div class="d-flex flex-column gap-3 mt-5">
+            <a href="mailto:hello@asinfotech.com"
+              class="d-flex align-items-center gap-3 text-primary text-decoration-none" style="font-weight: 500;">
+              <div class="icon-box-accent" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                <i class="ph ph-envelope-simple"></i>
+              </div>
+              hello@asinfotech.com
+            </a>
+            <a href="tel:+919566412970" class="d-flex align-items-center gap-3 text-primary text-decoration-none"
+              style="font-weight: 500;">
+              <div class="icon-box-accent" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                <i class="ph ph-phone"></i>
+              </div>
+              +91 95664 12970
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-7 gs-reveal mt-mobile-4">
+          <div class="contact-form-card">
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+              <input type="hidden" name="subject" value="New Inquiry from AS Infotech Website">
+
+              <div class="row g-3">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" name="name" id="name" required placeholder="John Doe">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" name="email" id="email" required
+                    placeholder="john@example.com">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="service" class="form-label">Service of Interest</label>
+                <select class="form-control" name="service" id="service" required>
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="App Development">App Development</option>
+                  <option value="Digital Marketing & SEO">Digital Marketing & SEO</option>
+                  <option value="Design & Video">Design & Video Production</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" name="message" id="message" rows="4" required
+                  placeholder="Tell us a little bit about your project and goals..."></textarea>
+              </div>
+
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <button type="submit" class="btn-premium btn-primary-gradient w-100 border-0 py-3 mt-2"
+                style="font-size: 1rem;">
+                Send Message <i class="ph ph-paper-plane-right ms-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row g-5 mb-5 border-bottom pb-5" style="border-color: var(--border-color) !important;">
+        <div class="col-lg-5">
+          <h3 class="display-font fs-3 mb-4">AS Infotech.</h3>
+          <p class="text-secondary mb-4 pe-lg-5">Your dedicated partner for premium digital experiences. We design,
+            develop, market, and scale brands for the modern web.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="footer-icon"><i class="ph ph-twitter-logo fs-5"></i></a>
+            <a href="#" class="footer-icon"><i class="ph ph-linkedin-logo fs-5"></i></a>
+            <a href="#" class="footer-icon"><i class="ph ph-instagram-logo fs-5"></i></a>
+            <a href="#" class="footer-icon"><i class="ph ph-dribbble-logo fs-5"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5 class="fs-6 mb-4 font-weight-bold">Services</h5>
+          <a href="#services" class="footer-link">Web Development</a>
+          <a href="#services" class="footer-link">App Development</a>
+          <a href="#services" class="footer-link">Digital Marketing</a>
+          <a href="#services" class="footer-link">Video Production</a>
+          <a href="#services" class="footer-link">UI/UX Design</a>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5 class="fs-6 mb-4 font-weight-bold">Company</h5>
+          <a href="#about" class="footer-link">About Us</a>
+          <a href="#work" class="footer-link">Portfolio</a>
+          <a href="#" class="footer-link">Our Process</a>
+          <a href="#" class="footer-link">Careers</a>
+        </div>
+        <div class="col-lg-3">
+          <h5 class="fs-6 mb-4 font-weight-bold">Contact Us</h5>
+          <a href="mailto:hello@asinfotech.com" class="footer-link d-flex align-items-center gap-2 mb-3">
+            <i class="ph ph-envelope fs-5 text-primary"></i> hello@asinfotech.com
+          </a>
+          <a href="tel:+919566412970" class="footer-link d-flex align-items-center gap-2 mb-3">
+            <i class="ph ph-phone fs-5 text-primary"></i> +91 95664 12970
+          </a>
+          <p class="text-secondary d-flex align-items-start gap-2 mt-3">
+            <i class="ph ph-map-pin fs-5 text-primary mt-1"></i>
+            <span>Tech Park Avenue,<br>Chennai, Tamil Nadu, India</span>
+          </p>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small">
+        <p class="mb-2 mb-md-0">&copy; 2026 AS Infotech. All rights reserved.</p>
+        <div class="d-flex gap-4">
+          <a href="#" class="text-secondary hover-primary">Privacy Policy</a>
+          <a href="#" class="text-secondary hover-primary">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+
+  <script>
+    // 1. Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Integrate GSAP with Lenis
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    // 2. Floating Navbar Scroll Effect
+    const navWrapper = document.getElementById('navbar-wrapper');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navWrapper.classList.add('scrolled');
+      } else {
+        navWrapper.classList.remove('scrolled');
+      }
+    });
+
+    // 3. Mouse Parallax for Hero Icons
+    const parallaxScene = document.getElementById('home');
+    const parallaxShapes = document.querySelectorAll('.floating-shape');
+
+    parallaxScene.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      parallaxShapes.forEach(shape => {
+        const speed = shape.getAttribute('data-speed');
+        const x = (clientX - centerX) * speed * 0.015;
+        const y = (clientY - centerY) * speed * 0.015;
+
+        gsap.to(shape, {
+          x: x,
+          y: y,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // 4. Portfolio Filtering Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectItems.forEach(item => {
+          if (filterValue === 'all' || item.classList.contains(filterValue)) {
+            item.classList.remove('hide');
+            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => { item.classList.add('hide'); }, 400);
+          }
+        });
+
+        setTimeout(() => { ScrollTrigger.refresh(); }, 500);
+      });
+    });
+
+    // 5. Reveal Animations
+    gsap.fromTo('.hero-badge-new', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: "power3.out", delay: 0.2 });
+    gsap.fromTo('.hero-title-new', { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.2, ease: "power4.out", delay: 0.4 });
+    gsap.fromTo('.hero-desc-new', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: "power3.out", delay: 0.6 });
+    gsap.fromTo('.hero .btn-solid-blue, .hero .btn-outline-light-new', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.8 });
+    gsap.fromTo('.hero-stats', { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, ease: "power3.out", delay: 1.0 });
+
+    // Scroll Reveals for other sections
+    const revealElements = document.querySelectorAll('.gs-reveal:not(.hero *)');
+    revealElements.forEach((elem) => {
+      gsap.fromTo(elem,
+        { autoAlpha: 0, y: 40 },
+        {
+          duration: 1,
+          autoAlpha: 1,
+          y: 0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: elem,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    // 6. Counter Animations
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      ScrollTrigger.create({
+        trigger: counter,
+        start: "top 95%",
+        once: true,
+        onEnter: () => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          gsap.to(counter, {
+            innerHTML: target,
+            duration: 2,
+            snap: { innerHTML: 1 },
+            ease: "power2.out"
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
